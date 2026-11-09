@@ -39,8 +39,8 @@ class ArtworkService:
 
     def searchArtwork(self, query : str):
         try:
-            response = self.client.getCall(f"artworks/search", qpParams={"q", query}, headers = self.headers)
-            return response["data"] 
+            response = self.client.getCall(f"artworks/search", qpParams={"q": query}, headers = self.headers)
+            return response
         except Exception as e:
             return self._handleError(e)
 
@@ -92,6 +92,20 @@ class ArtworkService:
         try:
             response = self.client.getCall(f"places/{placeId}", headers= self.headers)
             return response 
+        except Exception as e:
+            return self._handleError(e)
+
+    def downloadImage(self, imageIIFUrl : str, fileName : str):
+        try:
+            response = BaseHTTPClient.callEndpoint(f"{imageIIFUrl}", headers = self.headers)
+            with open(fileName.replace(".png", ".jpg"), "wb") as f:
+                for chunk in response.iter_content(chunk_size = 1024):
+                    f.write(chunk)
+            return {
+                "status": "success",
+                "message": f"image data written to {fileName}"
+            }
+
         except Exception as e:
             return self._handleError(e)
         

@@ -10,3 +10,9 @@ class BaseHTTPClient:
         response = requests.get(f"{self.baseURL}/{endpoint}?{urlencode(qpParams)}", headers = headers)
         response.raise_for_status()
         return response.json()
+
+    @staticmethod
+    def callEndpoint(url : str, headers : Dict = {}):
+        response = requests.get(url, headers=headers)
+        response.raise_for_status()
+        return response

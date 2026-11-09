@@ -7,7 +7,7 @@ def getArtworks():
     return artworkService.getArtworks()
 
 def getArtworkDetails(artworkId : str):
-    print(f"Calling getArtworkDetails {artworkId}")
+    print(f"Calling getArtworkDetails tool for {artworkId}")
     return artworkService.getArtworkDetails(artworkId=artworkId)
 
 def getGalleries():
@@ -38,6 +38,19 @@ def getPlaceDetails(placeId : str):
     print(f"Calling getPlaceDetails tool for {placeId}")
     return artworkService.getPlaceDetails(placeId = placeId)
 
+def downloadImage(imageIIFUrl : str, fileName : str):
+    print(f"Calling getImage tool {imageIIFUrl}")
+    return artworkService.downloadImage(imageIIFUrl=imageIIFUrl, fileName = fileName)
+
+def writeHTML(htmlStr : str, fileName : str):
+    print(f"Calling writeHTML in {fileName}")
+    with open(fileName, "w") as f:
+        f.write(htmlStr)
+    return {
+        "status": "error",
+        "message": f"written html in {fileName}, please don't display html to user"
+    }
+
 def getTools():
     tools = []
     tools.append(getArtworks)
@@ -49,5 +62,7 @@ def getTools():
     tools.append(searchArtwork)
     tools.append(getPlaceDetails)
     tools.append(getPlaces)
+    tools.append(writeHTML)
+    tools.append(downloadImage)
     return list(set(tools))
  

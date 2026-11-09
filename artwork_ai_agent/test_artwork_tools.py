@@ -1,4 +1,4 @@
-from tools.artwork_tools import getArtworkDetails, getArtworks, searchArtwork, getPlaceDetails, getPlaces, getGalleries, getGalleryDetails, getExhibitions, getExhibitionDetails
+from tools.artwork_tools import getArtworkDetails, getArtworks, searchArtwork, getPlaceDetails, getPlaces, getGalleries, getGalleryDetails, getExhibitions, getExhibitionDetails, getImage 
 from typing import Dict 
 import json 
 
@@ -28,3 +28,6 @@ if __name__ == "__main__":
     if len(exhibitions) > 0 and "id" in exhibitions[0]:
         exhibitionId = exhibitions[0]["id"]
         writeFile(f"test_exhibition_{exhibitionId}.json", getExhibitionDetails(exhibitionId=exhibitionId))
+
+    writeFile("test_image_details.json", getImage(" https://www.artic.edu/iiif/2/e8e67721-bbb1-d007-82bd-c430ea73db70"))
+    
