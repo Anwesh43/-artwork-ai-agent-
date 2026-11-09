@@ -50,7 +50,7 @@ class ArtworkService:
         except Exception as e:
             return self._handleError(e)
 
-    def getExhitionDetails(self, exhibitionId : str):
+    def getExhibitionDetails(self, exhibitionId : str):
         try:
             response = self.client.getCall(f"exhibitions/{exhibitionId}")
             return response
