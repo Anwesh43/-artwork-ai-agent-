@@ -4,7 +4,7 @@ artworkService = ArtworkService()
 
 def getArtworks():
     print(f"Calling getArtworks tool")
-    return artworkService.getArtworkDetails()
+    return artworkService.getArtworks()
 
 def getArtworkDetails(artworkId : str):
     print(f"Calling getArtworkDetails {artworkId}")
@@ -16,7 +16,7 @@ def getGalleries():
 
 def getGalleryDetails(galleryId : str):
     print(f"Calling getGalleryDetails for {galleryId}")
-    return artworkService.getArtworkDetails(galleryId = galleryId)
+    return artworkService.getGalleryDetails(galleryId = galleryId)
 
 def getExhibitions():
     print(f"Calling getExhibitions tool")
