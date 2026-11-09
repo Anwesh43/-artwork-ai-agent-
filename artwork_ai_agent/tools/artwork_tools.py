@@ -37,3 +37,17 @@ def getPlaces():
 def getPlaceDetails(placeId : str):
     print(f"Calling getPlaceDetails tool for {placeId}")
     return artworkService.getPlaceDetails(placeId = placeId)
+
+def getTools():
+    tools = []
+    tools.append(getArtworks)
+    tools.append(getArtworkDetails)
+    tools.append(getExhibitions)
+    tools.append(getExhibitionDetails)
+    tools.append(getGalleries)
+    tools.append(getGalleryDetails)
+    tools.append(searchArtwork)
+    tools.append(getPlaceDetails)
+    tools.append(getPlaces)
+    return list(set(tools))
+ 
